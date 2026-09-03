@@ -1,0 +1,275 @@
+{
+ "benchmark": {
+  "standard": "ISRO SIH 2026 PS #26168",
+  "definition": "final horizontal error / distance travelled during outage * 100",
+  "threshold_percent": 10.0
+ },
+ "dataset": "IO-VNBD Birmingham",
+ "ml_active": false,
+ "scenarios": [
+  {
+   "scenario": "30_second_outage_sharp_turn",
+   "scenario_id": "scn_A",
+   "description": "Sharp turn, 18.3 m/s entry, vehicle stops mid-outage",
+   "outage_duration_s": 30.0,
+   "distance_travelled_m": 468.1,
+   "threshold_m": 46.8,
+   "reconvergence_time_s": 7.1,
+   "baseline_ins_open_loop": {
+    "label": "INS open-loop (IMU integration only, no constraints)",
+    "rmse_m": 299.29,
+    "mae_m": 232.56,
+    "max_error_m": 563.17,
+    "final_error_m": 563.17,
+    "drift_percent": 120.32,
+    "passes": false
+   },
+   "with_nhc": {
+    "label": "UKF + non-holonomic constraint",
+    "rmse_m": 120.35,
+    "mae_m": 92.66,
+    "max_error_m": 272.91,
+    "final_error_m": 272.91,
+    "drift_percent": 58.31,
+    "passes": false
+   },
+   "with_speed": {
+    "label": "UKF + speed constraint",
+    "rmse_m": 205.9,
+    "mae_m": 153.76,
+    "max_error_m": 435.2,
+    "final_error_m": 435.2,
+    "drift_percent": 92.98,
+    "passes": false
+   },
+   "final_system": {
+    "label": "UKF + NHC + speed constraint",
+    "rmse_m": 118.0,
+    "mae_m": 86.97,
+    "max_error_m": 280.21,
+    "final_error_m": 280.21,
+    "drift_percent": 59.87,
+    "passes": false
+   },
+   "with_ml": {
+    "label": "UKF + NHC + ML speed estimator",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 no ML model loaded",
+    "oracle_ceiling_drift_percent": 61.4
+   },
+   "with_map_matching": {
+    "label": "+ post-hoc road snapping",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 supplied by the map-matching layer"
+   }
+  },
+  {
+   "scenario": "30_second_outage_highway",
+   "scenario_id": "scn_B",
+   "description": "Highway, constant speed \u2014 primary ISRO benchmark case",
+   "outage_duration_s": 30.0,
+   "distance_travelled_m": 366.2,
+   "threshold_m": 36.6,
+   "reconvergence_time_s": 0.2,
+   "baseline_ins_open_loop": {
+    "label": "INS open-loop (IMU integration only, no constraints)",
+    "rmse_m": 22.8,
+    "mae_m": 19.7,
+    "max_error_m": 61.09,
+    "final_error_m": 61.09,
+    "drift_percent": 16.68,
+    "passes": false
+   },
+   "with_nhc": {
+    "label": "UKF + non-holonomic constraint",
+    "rmse_m": 12.44,
+    "mae_m": 11.47,
+    "max_error_m": 17.1,
+    "final_error_m": 10.83,
+    "drift_percent": 2.96,
+    "passes": true
+   },
+   "with_speed": {
+    "label": "UKF + speed constraint",
+    "rmse_m": 19.58,
+    "mae_m": 17.22,
+    "max_error_m": 29.04,
+    "final_error_m": 29.04,
+    "drift_percent": 7.93,
+    "passes": true
+   },
+   "final_system": {
+    "label": "UKF + NHC + speed constraint",
+    "rmse_m": 12.39,
+    "mae_m": 11.28,
+    "max_error_m": 17.03,
+    "final_error_m": 10.98,
+    "drift_percent": 3.0,
+    "passes": true
+   },
+   "with_ml": {
+    "label": "UKF + NHC + ML speed estimator",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 no ML model loaded",
+    "oracle_ceiling_drift_percent": 2.19
+   },
+   "with_map_matching": {
+    "label": "+ post-hoc road snapping",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 supplied by the map-matching layer"
+   }
+  },
+  {
+   "scenario": "30_second_outage_urban",
+   "scenario_id": "scn_C",
+   "description": "Urban, moderate turn",
+   "outage_duration_s": 30.0,
+   "distance_travelled_m": 352.4,
+   "threshold_m": 35.2,
+   "reconvergence_time_s": 0.2,
+   "baseline_ins_open_loop": {
+    "label": "INS open-loop (IMU integration only, no constraints)",
+    "rmse_m": 50.41,
+    "mae_m": 37.74,
+    "max_error_m": 138.25,
+    "final_error_m": 138.25,
+    "drift_percent": 39.23,
+    "passes": false
+   },
+   "with_nhc": {
+    "label": "UKF + non-holonomic constraint",
+    "rmse_m": 19.86,
+    "mae_m": 16.41,
+    "max_error_m": 56.44,
+    "final_error_m": 56.44,
+    "drift_percent": 16.01,
+    "passes": false
+   },
+   "with_speed": {
+    "label": "UKF + speed constraint",
+    "rmse_m": 9.06,
+    "mae_m": 7.44,
+    "max_error_m": 17.45,
+    "final_error_m": 17.45,
+    "drift_percent": 4.95,
+    "passes": true
+   },
+   "final_system": {
+    "label": "UKF + NHC + speed constraint",
+    "rmse_m": 6.7,
+    "mae_m": 5.64,
+    "max_error_m": 11.8,
+    "final_error_m": 9.75,
+    "drift_percent": 2.77,
+    "passes": true
+   },
+   "with_ml": {
+    "label": "UKF + NHC + ML speed estimator",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 no ML model loaded",
+    "oracle_ceiling_drift_percent": 1.77
+   },
+   "with_map_matching": {
+    "label": "+ post-hoc road snapping",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 supplied by the map-matching layer"
+   }
+  },
+  {
+   "scenario": "300_second_continuous_outage",
+   "scenario_id": "scn_LONG",
+   "description": "GPS cut and never restored \u2014 for the outage-duration slider",
+   "outage_duration_s": 300.0,
+   "distance_travelled_m": 3105.4,
+   "threshold_m": 310.5,
+   "reconvergence_time_s": 3.0,
+   "baseline_ins_open_loop": {
+    "label": "INS open-loop (IMU integration only, no constraints)",
+    "rmse_m": 2144.26,
+    "mae_m": 1681.33,
+    "max_error_m": 5269.35,
+    "final_error_m": 5269.35,
+    "drift_percent": 169.68,
+    "passes": false
+   },
+   "with_nhc": {
+    "label": "UKF + non-holonomic constraint",
+    "rmse_m": 710.51,
+    "mae_m": 535.65,
+    "max_error_m": 2046.73,
+    "final_error_m": 2046.73,
+    "drift_percent": 65.91,
+    "passes": false
+   },
+   "with_speed": {
+    "label": "UKF + speed constraint",
+    "rmse_m": 927.67,
+    "mae_m": 692.79,
+    "max_error_m": 1597.01,
+    "final_error_m": 1580.27,
+    "drift_percent": 50.89,
+    "passes": false
+   },
+   "final_system": {
+    "label": "UKF + NHC + speed constraint",
+    "rmse_m": 1266.99,
+    "mae_m": 908.89,
+    "max_error_m": 2568.1,
+    "final_error_m": 2568.1,
+    "drift_percent": 82.7,
+    "passes": false
+   },
+   "with_ml": {
+    "label": "UKF + NHC + ML speed estimator",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 no ML model loaded",
+    "oracle_ceiling_drift_percent": null
+   },
+   "with_map_matching": {
+    "label": "+ post-hoc road snapping",
+    "rmse_m": null,
+    "mae_m": null,
+    "max_error_m": null,
+    "final_error_m": null,
+    "drift_percent": null,
+    "passes": null,
+    "status": "pending \u2014 supplied by the map-matching layer"
+   }
+  }
+ ]
+}
