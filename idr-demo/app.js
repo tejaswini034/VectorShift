@@ -1,13 +1,27 @@
 // ============================================================
-// VectorShift - Navigation Replay
-// Frontend replay layer for the final UKF trajectory output
+// VectorShift - Navigation Replay Demo
 // ============================================================
+//
+// DATA FLOW:
+//
+// trajectory_scn_X_1.json
+//      -> replay position / UKF estimate / GNSS state
+//
+// metrics.json
+//      -> precomputed evaluation / ablation results
+//
+// map.js
+//      -> later consumes the current trajectory sample
+//
+// ============================================================
+
 
 // ------------------------------------------------------------
 // GLOBAL STATE
 // ------------------------------------------------------------
 
 let trajectoryData = null;
+let metricsData = null;
 
 let currentIndex = 0;
 let isPlaying = false;
@@ -16,53 +30,189 @@ let playbackMultiplier = 1;
 
 
 // ------------------------------------------------------------
-// DATA LOADING
+// SCENARIO CONFIGURATION
 // ------------------------------------------------------------
 
-async function loadTrajectoryData() {
+// B = highway
+// C = urban
+// A = hard corner
+// LONG = 300 second continuous outage
+
+const DEFAULT_SCENARIO = "B";
+
+const SCENARIO_FILES = {
+
+    A: "trajectory_scn_A.json",
+
+    B: "trajectory_scn_B.json",
+
+    C: "trajectory_scn_C.json",
+
+    LONG: "trajectory_scn_LONG.json"
+};
+
+
+// ------------------------------------------------------------
+// DETERMINE SCENARIO
+// ------------------------------------------------------------
+//
+// Example:
+//
+// index.html?scenario=B
+//
+// index.html?scenario=C
+//
+// index.html?scenario=A
+//
+// index.html?scenario=LONG
+//
+// ------------------------------------------------------------
+
+function getScenarioFromURL() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const requested =
+        (
+            params.get("scenario") ||
+            DEFAULT_SCENARIO
+        ).toUpperCase();
+
+
+    if (SCENARIO_FILES[requested]) {
+
+        return requested;
+
+    }
+
+    return DEFAULT_SCENARIO;
+}
+
+
+// ------------------------------------------------------------
+// LOAD BOTH DATA SOURCES
+// ------------------------------------------------------------
+
+async function loadData() {
+
+    const scenario =
+        getScenarioFromURL();
+
+    const trajectoryFile =
+        SCENARIO_FILES[scenario];
+
+
+    console.log(
+        "Loading scenario:",
+        scenario
+    );
+
+    console.log(
+        "Trajectory file:",
+        trajectoryFile
+    );
+
 
     try {
 
-        // Scenario B for now.
-        // Later we can switch this dynamically between:
-        // trajectory_scn_A.json
-        // trajectory_scn_B.json
-        // trajectory_scn_C.json
-        // trajectory_scn_LONG.json
+        // Load trajectory AND metrics in parallel.
 
-        const response = await fetch(
-            "data/trajectory_scn_B.json"
-        );
+        const [
+            trajectoryResponse,
+            metricsResponse
+        ] = await Promise.all([
 
-        if (!response.ok) {
+            fetch(
+                `data/${trajectoryFile}`
+            ),
+
+            fetch(
+                "data/metrics.json"
+            )
+
+        ]);
+
+
+        // ----------------------------------------------------
+        // CHECK TRAJECTORY FILE
+        // ----------------------------------------------------
+
+        if (!trajectoryResponse.ok) {
+
             throw new Error(
-                `HTTP ${response.status} - ${response.statusText}`
+                `Could not load ${trajectoryFile}`
             );
         }
 
-        trajectoryData = await response.json();
+
+        // ----------------------------------------------------
+        // CHECK METRICS FILE
+        // ----------------------------------------------------
+
+        if (!metricsResponse.ok) {
+
+            throw new Error(
+                "Could not load data/metrics.json"
+            );
+        }
+
+
+        // ----------------------------------------------------
+        // PARSE JSON
+        // ----------------------------------------------------
+
+        trajectoryData =
+            await trajectoryResponse.json();
+
+
+        metricsData =
+            await metricsResponse.json();
+
+
+        // ----------------------------------------------------
+        // DEBUG OUTPUT
+        // ----------------------------------------------------
 
         console.log(
-            "Trajectory data loaded:",
+            "Trajectory loaded:",
             trajectoryData
         );
 
+
+        console.log(
+            "Metrics loaded:",
+            metricsData
+        );
+
+
+        // ----------------------------------------------------
+        // INITIALIZE
+        // ----------------------------------------------------
+
         initializeReplay();
+
+        updateAblationMetrics();
+
 
     } catch (error) {
 
         console.error(
-            "Failed to load trajectory data:",
+            "Failed to load demo data:",
             error
         );
 
-        // Show an error in the map area if possible
+
         const mapContainer =
             document.getElementById("map");
 
+
         if (mapContainer) {
+
             mapContainer.textContent =
-                "Failed to load trajectory data.";
+                "Failed to load demo data.";
         }
     }
 }
@@ -76,20 +226,32 @@ function initializeReplay() {
 
     if (
         !trajectoryData ||
-        !trajectoryData.samples ||
+        !Array.isArray(
+            trajectoryData.samples
+        ) ||
         trajectoryData.samples.length === 0
     ) {
+
         console.error(
-            "Trajectory data contains no samples."
+            "Trajectory contains no samples."
         );
 
         return;
     }
 
+
+    currentIndex = 0;
+
+
+    // --------------------------------------------------------
+    // TIMELINE SLIDER
+    // --------------------------------------------------------
+
     const slider =
         document.getElementById(
             "timelineSlider"
         );
+
 
     if (slider) {
 
@@ -101,10 +263,49 @@ function initializeReplay() {
         slider.value = 0;
     }
 
-    currentIndex = 0;
+
+    // --------------------------------------------------------
+    // OUTAGE DURATION SELECTOR
+    // --------------------------------------------------------
+
+    const outageSelector =
+        document.getElementById(
+            "outageDuration"
+        );
+
+
+    if (
+        outageSelector &&
+        trajectoryData.metadata
+    ) {
+
+        const duration =
+            Number(
+                trajectoryData.metadata
+                    .outage_duration_s
+            );
+
+
+        const matchingOption =
+            Array.from(
+                outageSelector.options
+            ).find(
+
+                option =>
+                    Number(option.value) ===
+                    duration
+            );
+
+
+        if (matchingOption) {
+
+            outageSelector.value =
+                matchingOption.value;
+        }
+    }
+
 
     updateDashboard();
-
 }
 
 
@@ -119,104 +320,62 @@ function haversineDistance(
     lon2
 ) {
 
-    const R = 6371000; // Earth radius in metres
+    const R = 6371000;
+
 
     const toRad =
-        (deg) => deg * Math.PI / 180;
+        degrees =>
+            degrees *
+            Math.PI /
+            180;
+
 
     const dLat =
-        toRad(lat2 - lat1);
+        toRad(
+            lat2 - lat1
+        );
+
 
     const dLon =
-        toRad(lon2 - lon1);
+        toRad(
+            lon2 - lon1
+        );
+
 
     const a =
-        Math.sin(dLat / 2) ** 2 +
 
-        Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLon / 2) ** 2;
+        Math.sin(
+            dLat / 2
+        ) ** 2
+
+        +
+
+        Math.cos(
+            toRad(lat1)
+        )
+
+        *
+
+        Math.cos(
+            toRad(lat2)
+        )
+
+        *
+
+        Math.sin(
+            dLon / 2
+        ) ** 2;
+
 
     const c =
-        2 * Math.atan2(
+        2 *
+        Math.atan2(
             Math.sqrt(a),
             Math.sqrt(1 - a)
         );
 
+
     return R * c;
-}
-
-
-// ------------------------------------------------------------
-// DISTANCE TRAVELLED DURING GNSS OUTAGE
-// ------------------------------------------------------------
-
-function calculateDistanceTravelled(index) {
-
-    if (
-        !trajectoryData ||
-        !trajectoryData.samples ||
-        index <= 0
-    ) {
-        return 0;
-    }
-
-    let distance = 0;
-
-    const samples =
-        trajectoryData.samples;
-
-    const outageStart =
-        trajectoryData.metadata
-            .outage_start_s;
-
-    const outageEnd =
-        trajectoryData.metadata
-            .outage_end_s;
-
-
-    for (let i = 1; i <= index; i++) {
-
-        const previous =
-            samples[i - 1];
-
-        const current =
-            samples[i];
-
-
-        // Only accumulate distance
-        // while the GNSS outage is active.
-
-        if (
-            current.timestamp_s >= outageStart &&
-            current.timestamp_s <= outageEnd
-        ) {
-
-            const previousTruth =
-                previous.ground_truth;
-
-            const currentTruth =
-                current.ground_truth;
-
-
-            if (
-                previousTruth &&
-                currentTruth
-            ) {
-
-                distance +=
-                    haversineDistance(
-                        previousTruth.latitude,
-                        previousTruth.longitude,
-
-                        currentTruth.latitude,
-                        currentTruth.longitude
-                    );
-            }
-        }
-    }
-
-    return distance;
 }
 
 
@@ -231,8 +390,10 @@ function calculateCurrentError(sample) {
         !sample.ukf_estimate ||
         !sample.ground_truth
     ) {
+
         return 0;
     }
+
 
     return haversineDistance(
 
@@ -246,26 +407,127 @@ function calculateCurrentError(sample) {
 
 
 // ------------------------------------------------------------
-// UPDATE METRICS
+// DISTANCE TRAVELLED DURING OUTAGE
+// ------------------------------------------------------------
+
+function calculateDistanceTravelled(index) {
+
+    if (
+        !trajectoryData ||
+        !Array.isArray(
+            trajectoryData.samples
+        ) ||
+        index <= 0
+    ) {
+
+        return 0;
+    }
+
+
+    const samples =
+        trajectoryData.samples;
+
+
+    const outageStart =
+        Number(
+            trajectoryData.metadata
+                .outage_start_s
+        );
+
+
+    const outageEnd =
+        Number(
+            trajectoryData.metadata
+                .outage_end_s
+        );
+
+
+    let distance = 0;
+
+
+    for (
+        let i = 1;
+        i <= index &&
+        i < samples.length;
+        i++
+    ) {
+
+        const previous =
+            samples[i - 1];
+
+
+        const current =
+            samples[i];
+
+
+        if (
+
+            current.timestamp_s >
+            outageStart
+
+            &&
+
+            current.timestamp_s <=
+            outageEnd
+
+        ) {
+
+            if (
+                previous.ground_truth &&
+                current.ground_truth
+            ) {
+
+                distance +=
+                    haversineDistance(
+
+                        previous.ground_truth.latitude,
+                        previous.ground_truth.longitude,
+
+                        current.ground_truth.latitude,
+                        current.ground_truth.longitude
+                    );
+            }
+        }
+    }
+
+
+    return distance;
+}
+
+
+// ------------------------------------------------------------
+// LIVE REPLAY METRICS
 // ------------------------------------------------------------
 
 function updateMetrics(sample) {
 
-    if (!trajectoryData || !sample) {
+    if (
+        !trajectoryData ||
+        !trajectoryData.metadata
+    ) {
+
         return;
     }
 
 
     const outageStart =
-        trajectoryData.metadata
-            .outage_start_s;
+        Number(
+            trajectoryData.metadata
+                .outage_start_s
+        );
+
 
     const outageEnd =
-        trajectoryData.metadata
-            .outage_end_s;
+        Number(
+            trajectoryData.metadata
+                .outage_end_s
+        );
+
 
     const timestamp =
-        sample.timestamp_s;
+        Number(
+            sample.timestamp_s
+        );
 
 
     // --------------------------------------------------------
@@ -273,13 +535,16 @@ function updateMetrics(sample) {
     // --------------------------------------------------------
 
     const currentError =
-        calculateCurrentError(sample);
+        calculateCurrentError(
+            sample
+        );
 
 
     const driftElement =
         document.getElementById(
             "driftValue"
         );
+
 
     if (driftElement) {
 
@@ -301,17 +566,18 @@ function updateMetrics(sample) {
     ) {
 
         outageTime =
-            timestamp - outageStart;
+            timestamp -
+            outageStart;
 
-    } else if (
+    }
+
+    else if (
         timestamp > outageEnd
     ) {
 
-        // Once GNSS has returned,
-        // display the complete outage duration.
-
         outageTime =
-            outageEnd - outageStart;
+            outageEnd -
+            outageStart;
     }
 
 
@@ -319,6 +585,7 @@ function updateMetrics(sample) {
         document.getElementById(
             "outageTime"
         );
+
 
     if (outageElement) {
 
@@ -328,19 +595,40 @@ function updateMetrics(sample) {
 
 
     // --------------------------------------------------------
-    // DISTANCE TRAVELLED DURING OUTAGE
+    // DISTANCE TRAVELLED
     // --------------------------------------------------------
 
-    const distanceTravelled =
+    let distanceTravelled =
         calculateDistanceTravelled(
             currentIndex
         );
+
+
+    // If the outage has completed,
+    // prefer the authoritative exported value.
+
+    if (
+        timestamp >= outageEnd &&
+
+        trajectoryData.metadata
+            .distance_travelled_during_outage_m
+            != null
+
+    ) {
+
+        distanceTravelled =
+            Number(
+                trajectoryData.metadata
+                    .distance_travelled_during_outage_m
+            );
+    }
 
 
     const distanceElement =
         document.getElementById(
             "distanceValue"
         );
+
 
     if (distanceElement) {
 
@@ -350,10 +638,7 @@ function updateMetrics(sample) {
 
 
     // --------------------------------------------------------
-    // DRIFT PERCENTAGE
-    //
-    // drift % =
-    // position error / distance travelled × 100
+    // LIVE DRIFT %
     // --------------------------------------------------------
 
     let driftPercent = 0;
@@ -361,7 +646,7 @@ function updateMetrics(sample) {
 
     if (
         timestamp >= outageStart &&
-        distanceTravelled > 0
+        distanceTravelled >= 10
     ) {
 
         driftPercent =
@@ -372,10 +657,40 @@ function updateMetrics(sample) {
     }
 
 
+    // --------------------------------------------------------
+    // AUTHORITATIVE FINAL DRIFT
+    // --------------------------------------------------------
+    //
+    // Once the outage has completed,
+    // use the benchmark value from the
+    // exported trajectory metadata.
+    //
+    // This prevents the frontend from
+    // producing a slightly different number
+    // from the official evaluation.
+    //
+    // --------------------------------------------------------
+
+    if (
+        timestamp >= outageEnd &&
+
+        trajectoryData.metadata
+            .drift_percent != null
+    ) {
+
+        driftPercent =
+            Number(
+                trajectoryData.metadata
+                    .drift_percent
+            );
+    }
+
+
     const driftPercentElement =
         document.getElementById(
             "driftPercent"
         );
+
 
     if (driftPercentElement) {
 
@@ -386,7 +701,7 @@ function updateMetrics(sample) {
 
 
 // ------------------------------------------------------------
-// UPDATE DASHBOARD
+// MAIN DASHBOARD UPDATE
 // ------------------------------------------------------------
 
 function updateDashboard() {
@@ -396,38 +711,38 @@ function updateDashboard() {
         !trajectoryData.samples ||
         !trajectoryData.samples[currentIndex]
     ) {
+
         return;
     }
 
 
     const sample =
-        trajectoryData.samples[currentIndex];
+        trajectoryData.samples[
+            currentIndex
+        ];
 
 
     // --------------------------------------------------------
-    // CURRENT TIME
+    // CURRENT TIMESTAMP
     // --------------------------------------------------------
 
-    const currentTimeElement =
+    const currentTime =
         document.getElementById(
             "currentTime"
         );
 
-    if (currentTimeElement) {
 
-        currentTimeElement.textContent =
-            sample.timestamp_s.toFixed(1) + " s";
+    if (currentTime) {
+
+        currentTime.textContent =
+            Number(
+                sample.timestamp_s
+            ).toFixed(1) + " s";
     }
 
 
     // --------------------------------------------------------
-    // SPEED
-    //
-    // The displayed speed comes from the UKF estimate.
-    //
-    // IMPORTANT:
-    // After ML is integrated into the UKF, this field should
-    // represent the fused UKF result, not raw ML output.
+    // UKF SPEED
     // --------------------------------------------------------
 
     const speedElement =
@@ -439,18 +754,24 @@ function updateDashboard() {
     if (
         speedElement &&
         sample.ukf_estimate &&
-        typeof sample.ukf_estimate.speed_ms === "number"
+        sample.ukf_estimate.speed_ms
+            != null
     ) {
 
+        const speedKmh =
+            Number(
+                sample.ukf_estimate
+                    .speed_ms
+            ) * 3.6;
+
+
         speedElement.textContent =
-            (
-                sample.ukf_estimate.speed_ms * 3.6
-            ).toFixed(1);
+            speedKmh.toFixed(1);
     }
 
 
     // --------------------------------------------------------
-    // POSITION UNCERTAINTY
+    // UKF UNCERTAINTY
     // --------------------------------------------------------
 
     const uncertaintyElement =
@@ -462,27 +783,36 @@ function updateDashboard() {
     if (
         uncertaintyElement &&
         sample.ukf_estimate &&
-        typeof sample.ukf_estimate.uncertainty_m === "number"
+        sample.ukf_estimate
+            .uncertainty_m != null
     ) {
 
         uncertaintyElement.textContent =
-            sample.ukf_estimate
-                .uncertainty_m
-                .toFixed(1);
+            Number(
+                sample.ukf_estimate
+                    .uncertainty_m
+            ).toFixed(1);
     }
 
 
     // --------------------------------------------------------
-    // UPDATE EVERYTHING ELSE
+    // METRICS
     // --------------------------------------------------------
 
     updateMetrics(sample);
 
-    updateNavigationMode(sample);
+
+    // --------------------------------------------------------
+    // NAVIGATION MODE
+    // --------------------------------------------------------
+
+    updateNavigationMode(
+        sample
+    );
 
 
     // --------------------------------------------------------
-    // UPDATE SLIDER
+    // SLIDER
     // --------------------------------------------------------
 
     const slider =
@@ -495,6 +825,35 @@ function updateDashboard() {
 
         slider.value =
             currentIndex;
+    }
+
+
+    // --------------------------------------------------------
+    // MAP HOOK
+    // --------------------------------------------------------
+    //
+    // map.js will eventually provide:
+    //
+    // window.updateMap(...)
+    //
+    // Until map.js exists, this safely does nothing.
+    //
+    // --------------------------------------------------------
+
+    if (
+        typeof window.updateMap ===
+        "function"
+    ) {
+
+        window.updateMap(
+
+            sample,
+
+            trajectoryData,
+
+            currentIndex
+
+        );
     }
 }
 
@@ -511,14 +870,15 @@ function updateNavigationMode(sample) {
         );
 
 
-    if (!badge || !sample) {
+    if (!badge) {
+
         return;
     }
 
 
-    if (sample.gnss_available) {
-
-        // GNSS has a valid measurement
+    if (
+        sample.gnss_available
+    ) {
 
         badge.textContent =
             "GNSS ACTIVE";
@@ -533,11 +893,9 @@ function updateNavigationMode(sample) {
             "gnss-mode"
         );
 
-    } else {
+    }
 
-        // GNSS unavailable.
-        // Navigation continues using the
-        // dead-reckoning / UKF estimate.
+    else {
 
         badge.textContent =
             "DEAD RECKONING ACTIVE";
@@ -555,9 +913,194 @@ function updateNavigationMode(sample) {
 }
 
 
+// ============================================================
+// METRICS.JSON / ABLATION
+// ============================================================
+
+
 // ------------------------------------------------------------
-// PLAY REPLAY
+// FIND METRICS FOR CURRENT SCENARIO
 // ------------------------------------------------------------
+
+function getCurrentScenarioMetrics() {
+
+    if (
+        !metricsData ||
+        !Array.isArray(
+            metricsData.scenarios
+        ) ||
+        !trajectoryData
+    ) {
+
+        return null;
+    }
+
+
+    const scenarioId =
+        trajectoryData.metadata &&
+        trajectoryData.metadata
+            .scenario_id;
+
+
+    console.log(
+        "Looking for metrics:",
+        scenarioId
+    );
+
+
+    return metricsData.scenarios.find(
+
+        scenario =>
+            scenario.scenario_id ===
+            scenarioId
+
+    ) || null;
+}
+
+
+// ------------------------------------------------------------
+// FORMAT METRIC
+// ------------------------------------------------------------
+
+function formatMetric(value) {
+
+    if (
+        value == null
+    ) {
+
+        return "Pending";
+    }
+
+
+    return (
+        Number(value).toFixed(2)
+        + "%"
+    );
+}
+
+
+// ------------------------------------------------------------
+// UPDATE ABLATION CARDS
+// ------------------------------------------------------------
+
+function updateAblationMetrics() {
+
+    const scenario =
+        getCurrentScenarioMetrics();
+
+
+    if (!scenario) {
+
+        console.warn(
+            "No matching metrics found."
+        );
+
+        return;
+    }
+
+
+    console.log(
+        "Ablation metrics:",
+        scenario
+    );
+
+
+    // --------------------------------------------------------
+    // BASELINE INS
+    // --------------------------------------------------------
+
+    const baselineElement =
+        document.getElementById(
+            "baselineDrift"
+        );
+
+
+    if (baselineElement) {
+
+        baselineElement.textContent =
+            formatMetric(
+
+                scenario
+                    .baseline_ins_open_loop
+                    ?.drift_percent
+
+            );
+    }
+
+
+    // --------------------------------------------------------
+    // ML
+    // --------------------------------------------------------
+
+    const mlElement =
+        document.getElementById(
+            "mlDrift"
+        );
+
+
+    if (mlElement) {
+
+        mlElement.textContent =
+            formatMetric(
+
+                scenario
+                    .with_ml
+                    ?.drift_percent
+
+            );
+    }
+
+
+    // --------------------------------------------------------
+    // NHC
+    // --------------------------------------------------------
+
+    const nhcElement =
+        document.getElementById(
+            "nhcDrift"
+        );
+
+
+    if (nhcElement) {
+
+        nhcElement.textContent =
+            formatMetric(
+
+                scenario
+                    .with_nhc
+                    ?.drift_percent
+
+            );
+    }
+
+
+    // --------------------------------------------------------
+    // FINAL SYSTEM
+    // --------------------------------------------------------
+
+    const finalElement =
+        document.getElementById(
+            "finalDrift"
+        );
+
+
+    if (finalElement) {
+
+        finalElement.textContent =
+            formatMetric(
+
+                scenario
+                    .final_system
+                    ?.drift_percent
+
+            );
+    }
+}
+
+
+// ============================================================
+// PLAYBACK
+// ============================================================
 
 function playReplay() {
 
@@ -566,12 +1109,13 @@ function playReplay() {
         !trajectoryData ||
         !trajectoryData.samples
     ) {
+
         return;
     }
 
 
-    // If we are already at the end,
-    // start again from the beginning.
+    // If replay has reached the end,
+    // restart from the beginning.
 
     if (
         currentIndex >=
@@ -601,12 +1145,13 @@ function playReplay() {
 
 
     // --------------------------------------------------------
-    // Dataset is sampled at approximately 10 Hz.
+    // 10 Hz DATA
+    // --------------------------------------------------------
     //
-    // Therefore:
+    // One sample every ~100 ms.
     //
-    // 1x  -> 100 ms per sample
-    // 2x  -> 50 ms per sample
+    // 1x = 100 ms
+    // 2x = 50 ms
     //
     // --------------------------------------------------------
 
@@ -632,13 +1177,15 @@ function playReplay() {
 
             },
 
-            100 / playbackMultiplier
+            100 /
+            playbackMultiplier
+
         );
 }
 
 
 // ------------------------------------------------------------
-// PAUSE REPLAY
+// PAUSE
 // ------------------------------------------------------------
 
 function pauseReplay() {
@@ -646,7 +1193,9 @@ function pauseReplay() {
     isPlaying = false;
 
 
-    if (playbackTimer !== null) {
+    if (
+        playbackTimer !== null
+    ) {
 
         clearInterval(
             playbackTimer
@@ -671,82 +1220,83 @@ function pauseReplay() {
 
 
 // ------------------------------------------------------------
-// RESTART REPLAY
+// RESTART
 // ------------------------------------------------------------
 
 function restartReplay() {
 
     pauseReplay();
 
+
     currentIndex = 0;
+
 
     updateDashboard();
 }
 
 
+// ============================================================
+// EVENT LISTENERS
+// ============================================================
+
+
 // ------------------------------------------------------------
-// PLAY / PAUSE BUTTON
+// PLAY BUTTON
 // ------------------------------------------------------------
 
-const playButton =
-    document.getElementById(
+document
+    .getElementById(
         "playButton"
-    );
+    )
+    ?.addEventListener(
 
-
-if (playButton) {
-
-    playButton.addEventListener(
         "click",
+
         () => {
 
             if (isPlaying) {
 
                 pauseReplay();
 
-            } else {
+            }
+
+            else {
 
                 playReplay();
             }
         }
     );
-}
 
 
 // ------------------------------------------------------------
 // RESTART BUTTON
 // ------------------------------------------------------------
 
-const restartButton =
-    document.getElementById(
+document
+    .getElementById(
         "restartButton"
-    );
+    )
+    ?.addEventListener(
 
-
-if (restartButton) {
-
-    restartButton.addEventListener(
         "click",
+
         restartReplay
     );
-}
 
 
 // ------------------------------------------------------------
 // TIMELINE SLIDER
 // ------------------------------------------------------------
 
-const timelineSlider =
-    document.getElementById(
+document
+    .getElementById(
         "timelineSlider"
-    );
+    )
+    ?.addEventListener(
 
-
-if (timelineSlider) {
-
-    timelineSlider.addEventListener(
         "input",
-        (event) => {
+
+        event => {
 
             currentIndex =
                 Number(
@@ -757,33 +1307,27 @@ if (timelineSlider) {
             updateDashboard();
         }
     );
-}
 
 
 // ------------------------------------------------------------
 // PLAYBACK SPEED
 // ------------------------------------------------------------
 
-const playbackSpeed =
-    document.getElementById(
+document
+    .getElementById(
         "playbackSpeed"
-    );
+    )
+    ?.addEventListener(
 
-
-if (playbackSpeed) {
-
-    playbackSpeed.addEventListener(
         "change",
-        (event) => {
+
+        event => {
 
             playbackMultiplier =
                 Number(
                     event.target.value
                 );
 
-
-            // Restart the timer so the new
-            // playback speed takes effect.
 
             if (isPlaying) {
 
@@ -793,11 +1337,10 @@ if (playbackSpeed) {
             }
         }
     );
-}
 
 
-// ------------------------------------------------------------
+// ============================================================
 // START APPLICATION
-// ------------------------------------------------------------
+// ============================================================
 
-loadTrajectoryData();
+loadData();

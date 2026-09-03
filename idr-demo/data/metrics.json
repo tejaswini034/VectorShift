@@ -5,14 +5,16 @@
   "threshold_percent": 10.0
  },
  "dataset": "IO-VNBD Birmingham",
- "ml_status": "not_yet_integrated \u2014 speed estimator pending",
+ "ml_active": false,
  "scenarios": [
   {
    "scenario": "30_second_outage_sharp_turn",
    "scenario_id": "scn_A",
+   "description": "Sharp turn, 18.3 m/s entry, vehicle stops mid-outage",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 468.1,
    "threshold_m": 46.8,
+   "reconvergence_time_s": 7.1,
    "baseline_ins_open_loop": {
     "label": "INS open-loop (IMU integration only, no constraints)",
     "rmse_m": 299.29,
@@ -57,7 +59,7 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aaishi model not yet integrated",
+    "status": "pending \u2014 no ML model loaded",
     "oracle_ceiling_drift_percent": 61.4
    },
    "with_map_matching": {
@@ -68,15 +70,17 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aashita to supply"
+    "status": "pending \u2014 supplied by the map-matching layer"
    }
   },
   {
    "scenario": "30_second_outage_highway",
    "scenario_id": "scn_B",
+   "description": "Highway, constant speed \u2014 primary ISRO benchmark case",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 366.2,
    "threshold_m": 36.6,
+   "reconvergence_time_s": 0.2,
    "baseline_ins_open_loop": {
     "label": "INS open-loop (IMU integration only, no constraints)",
     "rmse_m": 22.8,
@@ -121,7 +125,7 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aaishi model not yet integrated",
+    "status": "pending \u2014 no ML model loaded",
     "oracle_ceiling_drift_percent": 2.19
    },
    "with_map_matching": {
@@ -132,15 +136,17 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aashita to supply"
+    "status": "pending \u2014 supplied by the map-matching layer"
    }
   },
   {
    "scenario": "30_second_outage_urban",
    "scenario_id": "scn_C",
+   "description": "Urban, moderate turn",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 352.4,
    "threshold_m": 35.2,
+   "reconvergence_time_s": 0.2,
    "baseline_ins_open_loop": {
     "label": "INS open-loop (IMU integration only, no constraints)",
     "rmse_m": 50.41,
@@ -185,7 +191,7 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aaishi model not yet integrated",
+    "status": "pending \u2014 no ML model loaded",
     "oracle_ceiling_drift_percent": 1.77
    },
    "with_map_matching": {
@@ -196,15 +202,17 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aashita to supply"
+    "status": "pending \u2014 supplied by the map-matching layer"
    }
   },
   {
    "scenario": "300_second_continuous_outage",
    "scenario_id": "scn_LONG",
+   "description": "GPS cut and never restored \u2014 for the outage-duration slider",
    "outage_duration_s": 300.0,
    "distance_travelled_m": 3105.4,
    "threshold_m": 310.5,
+   "reconvergence_time_s": 3.0,
    "baseline_ins_open_loop": {
     "label": "INS open-loop (IMU integration only, no constraints)",
     "rmse_m": 2144.26,
@@ -249,7 +257,7 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aaishi model not yet integrated",
+    "status": "pending \u2014 no ML model loaded",
     "oracle_ceiling_drift_percent": null
    },
    "with_map_matching": {
@@ -260,7 +268,7 @@
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 Aashita to supply"
+    "status": "pending \u2014 supplied by the map-matching layer"
    }
   }
  ]
