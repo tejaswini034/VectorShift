@@ -14,7 +14,7 @@ async function loadTrajectoryData() {
     try {
 
         const response = await fetch(
-            "data/trajectory.json"
+            "data/trajectory_scn_B.json"
         );
 
         trajectoryData = await response.json();
