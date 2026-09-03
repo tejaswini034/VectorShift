@@ -1,21 +1,44 @@
+// ============================================================
+// VectorShift - Navigation Replay
+// Frontend replay layer for the final UKF trajectory output
+// ============================================================
+
+// ------------------------------------------------------------
+// GLOBAL STATE
+// ------------------------------------------------------------
+
 let trajectoryData = null;
 
 let currentIndex = 0;
-
 let isPlaying = false;
-
 let playbackTimer = null;
-
 let playbackMultiplier = 1;
 
+
+// ------------------------------------------------------------
+// DATA LOADING
+// ------------------------------------------------------------
 
 async function loadTrajectoryData() {
 
     try {
 
+        // Scenario B for now.
+        // Later we can switch this dynamically between:
+        // trajectory_scn_A.json
+        // trajectory_scn_B.json
+        // trajectory_scn_C.json
+        // trajectory_scn_LONG.json
+
         const response = await fetch(
             "data/trajectory_scn_B.json"
         );
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP ${response.status} - ${response.statusText}`
+            );
+        }
 
         trajectoryData = await response.json();
 
@@ -33,50 +56,108 @@ async function loadTrajectoryData() {
             error
         );
 
-    }
+        // Show an error in the map area if possible
+        const mapContainer =
+            document.getElementById("map");
 
+        if (mapContainer) {
+            mapContainer.textContent =
+                "Failed to load trajectory data.";
+        }
+    }
 }
 
 
+// ------------------------------------------------------------
+// INITIALIZE REPLAY
+// ------------------------------------------------------------
+
 function initializeReplay() {
+
+    if (
+        !trajectoryData ||
+        !trajectoryData.samples ||
+        trajectoryData.samples.length === 0
+    ) {
+        console.error(
+            "Trajectory data contains no samples."
+        );
+
+        return;
+    }
 
     const slider =
         document.getElementById(
             "timelineSlider"
         );
 
-    slider.max =
-        trajectoryData.samples.length - 1;
+    if (slider) {
+
+        slider.min = 0;
+
+        slider.max =
+            trajectoryData.samples.length - 1;
+
+        slider.value = 0;
+    }
+
+    currentIndex = 0;
 
     updateDashboard();
 
 }
 
-function haversineDistance(lat1, lon1, lat2, lon2) {
+
+// ------------------------------------------------------------
+// HAVERSINE DISTANCE
+// ------------------------------------------------------------
+
+function haversineDistance(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+) {
+
     const R = 6371000; // Earth radius in metres
 
-    const toRad = (deg) => deg * Math.PI / 180;
+    const toRad =
+        (deg) => deg * Math.PI / 180;
 
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
+    const dLat =
+        toRad(lat2 - lat1);
+
+    const dLon =
+        toRad(lon2 - lon1);
 
     const a =
         Math.sin(dLat / 2) ** 2 +
+
         Math.cos(toRad(lat1)) *
         Math.cos(toRad(lat2)) *
         Math.sin(dLon / 2) ** 2;
 
-    const c = 2 * Math.atan2(
-        Math.sqrt(a),
-        Math.sqrt(1 - a)
-    );
+    const c =
+        2 * Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1 - a)
+        );
 
     return R * c;
 }
 
+
+// ------------------------------------------------------------
+// DISTANCE TRAVELLED DURING GNSS OUTAGE
+// ------------------------------------------------------------
+
 function calculateDistanceTravelled(index) {
 
-    if (!trajectoryData || index <= 0) {
+    if (
+        !trajectoryData ||
+        !trajectoryData.samples ||
+        index <= 0
+    ) {
         return 0;
     }
 
@@ -86,10 +167,12 @@ function calculateDistanceTravelled(index) {
         trajectoryData.samples;
 
     const outageStart =
-        trajectoryData.metadata.outage_start_s;
+        trajectoryData.metadata
+            .outage_start_s;
 
     const outageEnd =
-        trajectoryData.metadata.outage_end_s;
+        trajectoryData.metadata
+            .outage_end_s;
 
 
     for (let i = 1; i <= index; i++) {
@@ -101,8 +184,8 @@ function calculateDistanceTravelled(index) {
             samples[i];
 
 
-        // Only count distance travelled
-        // during the GNSS outage.
+        // Only accumulate distance
+        // while the GNSS outage is active.
 
         if (
             current.timestamp_s >= outageStart &&
@@ -125,6 +208,7 @@ function calculateDistanceTravelled(index) {
                     haversineDistance(
                         previousTruth.latitude,
                         previousTruth.longitude,
+
                         currentTruth.latitude,
                         currentTruth.longitude
                     );
@@ -135,9 +219,15 @@ function calculateDistanceTravelled(index) {
     return distance;
 }
 
+
+// ------------------------------------------------------------
+// CURRENT POSITION ERROR
+// ------------------------------------------------------------
+
 function calculateCurrentError(sample) {
 
     if (
+        !sample ||
         !sample.ukf_estimate ||
         !sample.ground_truth
     ) {
@@ -145,6 +235,7 @@ function calculateCurrentError(sample) {
     }
 
     return haversineDistance(
+
         sample.ukf_estimate.latitude,
         sample.ukf_estimate.longitude,
 
@@ -153,41 +244,53 @@ function calculateCurrentError(sample) {
     );
 }
 
+
+// ------------------------------------------------------------
+// UPDATE METRICS
+// ------------------------------------------------------------
+
 function updateMetrics(sample) {
 
-    if (!trajectoryData) {
+    if (!trajectoryData || !sample) {
         return;
     }
 
 
     const outageStart =
-        trajectoryData.metadata.outage_start_s;
+        trajectoryData.metadata
+            .outage_start_s;
 
     const outageEnd =
-        trajectoryData.metadata.outage_end_s;
-
+        trajectoryData.metadata
+            .outage_end_s;
 
     const timestamp =
         sample.timestamp_s;
 
 
-    /*
-     * CURRENT POSITION ERROR
-     */
+    // --------------------------------------------------------
+    // CURRENT POSITION ERROR
+    // --------------------------------------------------------
 
     const currentError =
         calculateCurrentError(sample);
 
 
-    document.getElementById(
-        "driftValue"
-    ).textContent =
-        currentError.toFixed(1);
+    const driftElement =
+        document.getElementById(
+            "driftValue"
+        );
+
+    if (driftElement) {
+
+        driftElement.textContent =
+            currentError.toFixed(1);
+    }
 
 
-    /*
-     * OUTAGE ELAPSED TIME
-     */
+    // --------------------------------------------------------
+    // OUTAGE ELAPSED TIME
+    // --------------------------------------------------------
 
     let outageTime = 0;
 
@@ -204,20 +307,29 @@ function updateMetrics(sample) {
         timestamp > outageEnd
     ) {
 
+        // Once GNSS has returned,
+        // display the complete outage duration.
+
         outageTime =
             outageEnd - outageStart;
     }
 
 
-    document.getElementById(
-        "outageTime"
-    ).textContent =
-        outageTime.toFixed(1);
+    const outageElement =
+        document.getElementById(
+            "outageTime"
+        );
+
+    if (outageElement) {
+
+        outageElement.textContent =
+            outageTime.toFixed(1);
+    }
 
 
-    /*
-     * DISTANCE TRAVELLED DURING OUTAGE
-     */
+    // --------------------------------------------------------
+    // DISTANCE TRAVELLED DURING OUTAGE
+    // --------------------------------------------------------
 
     const distanceTravelled =
         calculateDistanceTravelled(
@@ -225,17 +337,24 @@ function updateMetrics(sample) {
         );
 
 
-    document.getElementById(
-        "distanceValue"
-    ).textContent =
-        distanceTravelled.toFixed(1);
+    const distanceElement =
+        document.getElementById(
+            "distanceValue"
+        );
+
+    if (distanceElement) {
+
+        distanceElement.textContent =
+            distanceTravelled.toFixed(1);
+    }
 
 
-    /*
-     * DRIFT %
-     *
-     * error / distance travelled × 100
-     */
+    // --------------------------------------------------------
+    // DRIFT PERCENTAGE
+    //
+    // drift % =
+    // position error / distance travelled × 100
+    // --------------------------------------------------------
 
     let driftPercent = 0;
 
@@ -253,56 +372,136 @@ function updateMetrics(sample) {
     }
 
 
-    document.getElementById(
-        "driftPercent"
-    ).textContent =
-        driftPercent.toFixed(2);
+    const driftPercentElement =
+        document.getElementById(
+            "driftPercent"
+        );
+
+    if (driftPercentElement) {
+
+        driftPercentElement.textContent =
+            driftPercent.toFixed(2);
+    }
 }
 
 
+// ------------------------------------------------------------
+// UPDATE DASHBOARD
+// ------------------------------------------------------------
 
 function updateDashboard() {
 
-    if (!trajectoryData) {
+    if (
+        !trajectoryData ||
+        !trajectoryData.samples ||
+        !trajectoryData.samples[currentIndex]
+    ) {
         return;
     }
+
 
     const sample =
         trajectoryData.samples[currentIndex];
 
-    document.getElementById(
-        "currentTime"
-    ).textContent =
-        sample.timestamp_s.toFixed(1) + " s";
+
+    // --------------------------------------------------------
+    // CURRENT TIME
+    // --------------------------------------------------------
+
+    const currentTimeElement =
+        document.getElementById(
+            "currentTime"
+        );
+
+    if (currentTimeElement) {
+
+        currentTimeElement.textContent =
+            sample.timestamp_s.toFixed(1) + " s";
+    }
 
 
-    document.getElementById(
-        "speedValue"
-    ).textContent =
-        (
-            sample.ukf_estimate.speed_ms * 3.6
-        ).toFixed(1);
+    // --------------------------------------------------------
+    // SPEED
+    //
+    // The displayed speed comes from the UKF estimate.
+    //
+    // IMPORTANT:
+    // After ML is integrated into the UKF, this field should
+    // represent the fused UKF result, not raw ML output.
+    // --------------------------------------------------------
+
+    const speedElement =
+        document.getElementById(
+            "speedValue"
+        );
 
 
-    document.getElementById(
-        "uncertaintyValue"
-    ).textContent =
-        sample.ukf_estimate
-            .uncertainty_m
-            .toFixed(1);
+    if (
+        speedElement &&
+        sample.ukf_estimate &&
+        typeof sample.ukf_estimate.speed_ms === "number"
+    ) {
 
+        speedElement.textContent =
+            (
+                sample.ukf_estimate.speed_ms * 3.6
+            ).toFixed(1);
+    }
+
+
+    // --------------------------------------------------------
+    // POSITION UNCERTAINTY
+    // --------------------------------------------------------
+
+    const uncertaintyElement =
+        document.getElementById(
+            "uncertaintyValue"
+        );
+
+
+    if (
+        uncertaintyElement &&
+        sample.ukf_estimate &&
+        typeof sample.ukf_estimate.uncertainty_m === "number"
+    ) {
+
+        uncertaintyElement.textContent =
+            sample.ukf_estimate
+                .uncertainty_m
+                .toFixed(1);
+    }
+
+
+    // --------------------------------------------------------
+    // UPDATE EVERYTHING ELSE
+    // --------------------------------------------------------
 
     updateMetrics(sample);
+
     updateNavigationMode(sample);
 
 
-    document.getElementById(
-        "timelineSlider"
-    ).value =
-        currentIndex;
+    // --------------------------------------------------------
+    // UPDATE SLIDER
+    // --------------------------------------------------------
 
+    const slider =
+        document.getElementById(
+            "timelineSlider"
+        );
+
+
+    if (slider) {
+
+        slider.value =
+            currentIndex;
+    }
 }
 
+
+// ------------------------------------------------------------
+// GNSS / DEAD RECKONING MODE
+// ------------------------------------------------------------
 
 function updateNavigationMode(sample) {
 
@@ -311,14 +510,24 @@ function updateNavigationMode(sample) {
             "modeBadge"
         );
 
+
+    if (!badge || !sample) {
+        return;
+    }
+
+
     if (sample.gnss_available) {
+
+        // GNSS has a valid measurement
 
         badge.textContent =
             "GNSS ACTIVE";
 
+
         badge.classList.remove(
             "outage-mode"
         );
+
 
         badge.classList.add(
             "gnss-mode"
@@ -326,63 +535,144 @@ function updateNavigationMode(sample) {
 
     } else {
 
+        // GNSS unavailable.
+        // Navigation continues using the
+        // dead-reckoning / UKF estimate.
+
         badge.textContent =
             "DEAD RECKONING ACTIVE";
+
 
         badge.classList.remove(
             "gnss-mode"
         );
 
+
         badge.classList.add(
             "outage-mode"
         );
-
     }
-
 }
 
 
+// ------------------------------------------------------------
+// PLAY REPLAY
+// ------------------------------------------------------------
+
 function playReplay() {
 
-    if (isPlaying) {
+    if (
+        isPlaying ||
+        !trajectoryData ||
+        !trajectoryData.samples
+    ) {
         return;
     }
+
+
+    // If we are already at the end,
+    // start again from the beginning.
+
+    if (
+        currentIndex >=
+        trajectoryData.samples.length - 1
+    ) {
+
+        currentIndex = 0;
+
+        updateDashboard();
+    }
+
 
     isPlaying = true;
 
 
+    const playButton =
+        document.getElementById(
+            "playButton"
+        );
+
+
+    if (playButton) {
+
+        playButton.textContent =
+            "⏸ Pause";
+    }
+
+
+    // --------------------------------------------------------
+    // Dataset is sampled at approximately 10 Hz.
+    //
+    // Therefore:
+    //
+    // 1x  -> 100 ms per sample
+    // 2x  -> 50 ms per sample
+    //
+    // --------------------------------------------------------
+
     playbackTimer =
-        setInterval(() => {
+        setInterval(
 
-            if (
-                currentIndex >=
-                trajectoryData.samples.length - 1
-            ) {
+            () => {
 
-                pauseReplay();
+                if (
+                    currentIndex >=
+                    trajectoryData.samples.length - 1
+                ) {
 
-                return;
-            }
+                    pauseReplay();
+
+                    return;
+                }
 
 
-            currentIndex++;
+                currentIndex++;
 
-            updateDashboard();
+                updateDashboard();
 
-        },
-        100 / playbackMultiplier);
+            },
 
+            100 / playbackMultiplier
+        );
 }
 
+
+// ------------------------------------------------------------
+// PAUSE REPLAY
+// ------------------------------------------------------------
 
 function pauseReplay() {
 
     isPlaying = false;
 
-    clearInterval(playbackTimer);
 
+    if (playbackTimer !== null) {
+
+        clearInterval(
+            playbackTimer
+        );
+
+        playbackTimer = null;
+    }
+
+
+    const playButton =
+        document.getElementById(
+            "playButton"
+        );
+
+
+    if (playButton) {
+
+        playButton.textContent =
+            "▶ Play";
+    }
 }
 
+
+// ------------------------------------------------------------
+// RESTART REPLAY
+// ------------------------------------------------------------
 
 function restartReplay() {
 
@@ -391,13 +681,22 @@ function restartReplay() {
     currentIndex = 0;
 
     updateDashboard();
-
 }
 
 
-document
-    .getElementById("playButton")
-    .addEventListener(
+// ------------------------------------------------------------
+// PLAY / PAUSE BUTTON
+// ------------------------------------------------------------
+
+const playButton =
+    document.getElementById(
+        "playButton"
+    );
+
+
+if (playButton) {
+
+    playButton.addEventListener(
         "click",
         () => {
 
@@ -405,39 +704,47 @@ document
 
                 pauseReplay();
 
-                document
-                    .getElementById(
-                        "playButton"
-                    ).textContent =
-                    "▶ Play";
-
             } else {
 
                 playReplay();
-
-                document
-                    .getElementById(
-                        "playButton"
-                    ).textContent =
-                    "⏸ Pause";
-
             }
-
         }
+    );
+}
+
+
+// ------------------------------------------------------------
+// RESTART BUTTON
+// ------------------------------------------------------------
+
+const restartButton =
+    document.getElementById(
+        "restartButton"
     );
 
 
-document
-    .getElementById("restartButton")
-    .addEventListener(
+if (restartButton) {
+
+    restartButton.addEventListener(
         "click",
         restartReplay
     );
+}
 
 
-document
-    .getElementById("timelineSlider")
-    .addEventListener(
+// ------------------------------------------------------------
+// TIMELINE SLIDER
+// ------------------------------------------------------------
+
+const timelineSlider =
+    document.getElementById(
+        "timelineSlider"
+    );
+
+
+if (timelineSlider) {
+
+    timelineSlider.addEventListener(
         "input",
         (event) => {
 
@@ -446,31 +753,51 @@ document
                     event.target.value
                 );
 
-            updateDashboard();
 
+            updateDashboard();
         }
+    );
+}
+
+
+// ------------------------------------------------------------
+// PLAYBACK SPEED
+// ------------------------------------------------------------
+
+const playbackSpeed =
+    document.getElementById(
+        "playbackSpeed"
     );
 
 
-document
-    .getElementById("playbackSpeed")
-    .addEventListener(
+if (playbackSpeed) {
+
+    playbackSpeed.addEventListener(
         "change",
         (event) => {
 
             playbackMultiplier =
-                Number(event.target.value);
+                Number(
+                    event.target.value
+                );
+
+
+            // Restart the timer so the new
+            // playback speed takes effect.
 
             if (isPlaying) {
 
                 pauseReplay();
 
                 playReplay();
-
             }
-
         }
     );
+}
 
+
+// ------------------------------------------------------------
+// START APPLICATION
+// ------------------------------------------------------------
 
 loadTrajectoryData();
