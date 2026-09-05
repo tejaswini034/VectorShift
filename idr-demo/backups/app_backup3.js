@@ -18,7 +18,12 @@ let playbackTimer = null;
 let playbackMultiplier = 1;
 
 // SCENARIO CONFIGURATION
-// A = hard corner, B = highway, C = urban/mixed, LONG = 300 s outage
+
+// B = highway
+// C = urban
+// A = hard corner
+// LONG = 300 second continuous outage
+
 const DEFAULT_SCENARIO = "B";
 const SCENARIO_FILES = {
     A: "trajectory_scn_A.json",
@@ -27,58 +32,67 @@ const SCENARIO_FILES = {
     LONG: "trajectory_scn_LONG.json"
 };
 
-const SCENARIO_LABELS = {
-    A: "Scenario A — Hard Turn",
-    B: "Scenario B — Highway",
-    C: "Scenario C — Urban / Mixed",
-    LONG: "Scenario LONG — Extended Outage"
-};
+// DETERMINE SCENARIO
+// Example:
+// index.html?scenario=B
+// index.html?scenario=C
+// index.html?scenario=A
+// index.html?scenario=LONG
+// ------------------------------------------------------------
 
-let currentScenario = DEFAULT_SCENARIO;
+function getScenarioFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const requested = (params.get("scenario") ||DEFAULT_SCENARIO).toUpperCase();
 
+    if (SCENARIO_FILES[requested]) {
+        return requested;
+    }
+    return DEFAULT_SCENARIO;
+}
 
-// LOAD SELECTED SCENARIO
-async function loadData(scenario = DEFAULT_SCENARIO) {
-    pauseReplay();
+// LOAD BOTH DATA SOURCES
+async function loadData() {
+    const scenario = getScenarioFromURL();
 
-    if (!SCENARIO_FILES[scenario]) scenario = DEFAULT_SCENARIO;
-    currentScenario = scenario;
+    const trajectoryFile =SCENARIO_FILES[scenario]; //B: "trajectory_scn_B.json",
 
-    const trajectoryFile = SCENARIO_FILES[scenario];
-
-    console.log("Loading scenario:", scenario);
-    console.log("Trajectory file:", trajectoryFile);
-
+    console.log("Loading scenario:",scenario);
+    console.log("Trajectory file:",trajectoryFile);
     try {
-        const [trajectoryResponse, metricsResponse] = await Promise.all([
+        // Load trajectory AND metrics in parallel.
+        const [trajectoryResponse,metricsResponse] = await Promise.all([
             fetch(`data/${trajectoryFile}`),
             fetch("data/metrics.json")
         ]);
-
-        if (!trajectoryResponse.ok) throw new Error(`Could not load ${trajectoryFile}`);
-        if (!metricsResponse.ok) throw new Error("Could not load data/metrics.json");
-
-        trajectoryData = await trajectoryResponse.json();
-        metricsData = await metricsResponse.json();
-        currentIndex = 0;
-
-        const select = document.getElementById("scenarioSelect");
-        if (select) select.value = currentScenario;
-
-        const label = document.getElementById("scenarioLabel");
-        if (label) {
-            label.textContent = trajectoryData.metadata?.label || SCENARIO_LABELS[currentScenario];
+        // CHECK TRAJECTORY FILE
+        if (!trajectoryResponse.ok) {
+            throw new Error( `Could not load ${trajectoryFile}`);
         }
 
+        // CHECK METRICS FILE
+        if (!metricsResponse.ok) {
+            throw new Error("Could not load data/metrics.json");
+        }
+
+        // PARSE JSON
+        trajectoryData =await trajectoryResponse.json();
+        metricsData =await metricsResponse.json();
+
+        // DEBUG OUTPUT
+        console.log("Trajectory loaded:",trajectoryData);
+        console.log("Metrics loaded:",metricsData);
+
+        // INITIALIZE
         initializeReplay();
         updateAblationMetrics();
 
-        if (typeof window.resetMap === "function") window.resetMap();
-        updateDashboard();
     } catch (error) {
-        console.error("Failed to load demo data:", error);
-        const mapContainer = document.getElementById("map");
-        if (mapContainer) mapContainer.textContent = "Failed to load demo data.";
+        console.error("Failed to load demo data:",error);
+
+        const mapContainer =document.getElementById("map");
+        if (mapContainer) {
+            mapContainer.textContent ="Failed to load demo data.";
+        }
     }
 }
 
@@ -391,8 +405,20 @@ function updateAblationMetrics() {
         baselineElement.textContent = formatMetric(scenario.baseline_ins_open_loop?.drift_percent);
     }
     
+    // NHC
+    const nhcElement =document.getElementById("nhcDrift");
+    if (nhcElement) {
+        nhcElement.textContent = formatMetric(scenario.with_nhc?.drift_percent);
+    }
+
+    // ML
+    const mlElement =document.getElementById("ukf+nhc+speed");
+    if (mlElement) {
+        mlElement.textContent = formatMetric(scenario.final_system?.drift_percent);
+    }
+
     // FINAL SYSTEM
-    const finalElement = document.getElementById("finalDrift");
+    const finalElement =document.getElementById("finalDrift");
     if (finalElement) {
         finalElement.textContent = formatMetric(scenario.ukf_full_snapped?.drift_percent);
     }
@@ -468,11 +494,6 @@ function restartReplay() {
     updateDashboard();
 }
 
-// SCENARIO SELECTOR
-document.getElementById("scenarioSelect")?.addEventListener("change", event => {
-    loadData(event.target.value);
-});
-
 // PLAY BUTTON
 document.getElementById("playButton")?.addEventListener("click",() => {
             if (isPlaying) {
@@ -509,8 +530,4 @@ document.getElementById("playbackSpeed")?.addEventListener("change",event => {
     );
 
 // START APPLICATION
-document.addEventListener("DOMContentLoaded", () => {
-    const select = document.getElementById("scenarioSelect");
-    if (select) select.value = DEFAULT_SCENARIO;
-    loadData(DEFAULT_SCENARIO);
-});
+loadData();

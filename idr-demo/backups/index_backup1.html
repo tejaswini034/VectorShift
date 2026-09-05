@@ -25,7 +25,6 @@
                     <h1>
                         VectorShift
                     </h1>
-                    <p id="scenarioLabel" class="scenario-label">Scenario B — Highway</p>
                 </div>
             </div>
 
@@ -70,16 +69,18 @@
                 <!-- LEGEND -->
                 <div class="trajectory-legend">
                     <div class="legend-item">
-                        <span class="legend-line estimate-gnss"></span>
-                        Estimate — GNSS active
+                        <span class="legend-dot raw-gnss"></span>
+                        Raw GNSS
                     </div>
+
                     <div class="legend-item">
-                        <span class="legend-line estimate-dr"></span>
-                        Estimate — Dead reckoning
+                        <span class="legend-dot estimate"></span>
+                        Navigation Estimate
                     </div>
+
                     <div class="legend-item">
-                        <span class="legend-line ground-truth"></span>
-                        Ground truth
+                        <span class="legend-dot ground-truth"></span>
+                        Ground Truth
                     </div>
                 </div>
             </section>
@@ -194,16 +195,6 @@
             </div>
 
             <div class="control-row">
-                <label class="scenario-control">
-                    Scenario
-                    <select id="scenarioSelect">
-                        <option value="B">B — Highway</option>
-                        <option value="C">C — Urban / Mixed</option>
-                        <option value="A">A — Hard Turn</option>
-                        <option value="LONG">LONG — Extended Outage</option>
-                    </select>
-                </label>
-
                 <button id="playButton">
 
                     ▶ Play
@@ -226,9 +217,6 @@
                         </option>
                         <option value="2">
                             2×
-                        </option>
-                        <option value="5">
-                            5×
                         </option>
                     </select>
                 </label>
@@ -270,14 +258,38 @@
 
             <div class="ablation-grid">
                 <div class="ablation-card">
-                    <p>Baseline INS</p>
-                    <strong id="baselineDrift">—</strong>
+                    <p>
+                        Baseline INS
+                    </p>
+                    <strong id="baselineDrift">
+                        —
+                    </strong>
                 </div>
-
+                
+                <div class="ablation-card">
+                    <p>
+                        UKF + NHC
+                    </p>
+                    <strong id="nhcDrift">
+                        —
+                    </strong>
+                </div>
+                <div class="ablation-card">
+                    <p>
+                        UKF + NHC + Speed constraints
+                    </p>
+                    <strong id="ukf+nhc+speed">
+                        —
+                    </strong>
+                </div>
+            
                 <div class="ablation-card final-card">
-                    <p>Final System</p>
-                    <small>UKF + NHC + ZUPT + ML</small>
-                    <strong id="finalDrift">—</strong>
+                    <p>
+                        Final System
+                    </p>
+                    <strong id="finalDrift">
+                        —
+                    </strong>
                 </div>
             </div>
         </section>

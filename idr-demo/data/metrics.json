@@ -57,7 +57,7 @@
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": null,
-    "drift_percent": null,
+    "drift_percent": 59.87, 
     "passes": null,
     "status": "pending \u2014 not yet measured for this scenario"
    }
@@ -222,7 +222,7 @@
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": null,
-    "drift_percent": null,
+    "drift_percent": 82.7,
     "passes": null,
     "status": "pending \u2014 not yet measured for this scenario"
    }
