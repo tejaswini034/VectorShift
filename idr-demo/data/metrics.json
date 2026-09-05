@@ -51,26 +51,15 @@
     "drift_percent": 59.87,
     "passes": false
    },
-   "with_ml": {
-    "label": "UKF + NHC + ML speed estimator",
+   "ukf_full_snapped": {
+    "label": "UKF + NHC + speed constraint + post-hoc road snapping",
     "rmse_m": null,
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 no ML model loaded",
-    "oracle_ceiling_drift_percent": 61.4
-   },
-   "with_map_matching": {
-    "label": "+ post-hoc road snapping",
-    "rmse_m": null,
-    "mae_m": null,
-    "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 supplied by the map-matching layer"
+    "status": "pending \u2014 not yet measured for this scenario"
    }
   },
   {
@@ -117,26 +106,15 @@
     "drift_percent": 3.0,
     "passes": true
    },
-   "with_ml": {
-    "label": "UKF + NHC + ML speed estimator",
+   "ukf_full_snapped": {
+    "label": "UKF + NHC + speed constraint + post-hoc road snapping",
     "rmse_m": null,
     "mae_m": null,
     "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 no ML model loaded",
-    "oracle_ceiling_drift_percent": 2.19
-   },
-   "with_map_matching": {
-    "label": "+ post-hoc road snapping",
-    "rmse_m": null,
-    "mae_m": null,
-    "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 supplied by the map-matching layer"
+    "final_error_m": 8.7,
+    "drift_percent": 2.37,
+    "passes": true,
+    "status": "measured"
    }
   },
   {
@@ -183,26 +161,15 @@
     "drift_percent": 2.77,
     "passes": true
    },
-   "with_ml": {
-    "label": "UKF + NHC + ML speed estimator",
+   "ukf_full_snapped": {
+    "label": "UKF + NHC + speed constraint + post-hoc road snapping",
     "rmse_m": null,
     "mae_m": null,
     "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 no ML model loaded",
-    "oracle_ceiling_drift_percent": 1.77
-   },
-   "with_map_matching": {
-    "label": "+ post-hoc road snapping",
-    "rmse_m": null,
-    "mae_m": null,
-    "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 supplied by the map-matching layer"
+    "final_error_m": 5.2,
+    "drift_percent": 1.48,
+    "passes": true,
+    "status": "measured"
    }
   },
   {
@@ -249,26 +216,15 @@
     "drift_percent": 82.7,
     "passes": false
    },
-   "with_ml": {
-    "label": "UKF + NHC + ML speed estimator",
+   "ukf_full_snapped": {
+    "label": "UKF + NHC + speed constraint + post-hoc road snapping",
     "rmse_m": null,
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": null,
     "drift_percent": null,
     "passes": null,
-    "status": "pending \u2014 no ML model loaded",
-    "oracle_ceiling_drift_percent": null
-   },
-   "with_map_matching": {
-    "label": "+ post-hoc road snapping",
-    "rmse_m": null,
-    "mae_m": null,
-    "max_error_m": null,
-    "final_error_m": null,
-    "drift_percent": null,
-    "passes": null,
-    "status": "pending \u2014 supplied by the map-matching layer"
+    "status": "pending \u2014 not yet measured for this scenario"
    }
   }
  ]

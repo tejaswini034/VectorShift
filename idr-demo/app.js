@@ -41,10 +41,8 @@ const SCENARIO_FILES = {
 // ------------------------------------------------------------
 
 function getScenarioFromURL() {
-    const params =
-        new URLSearchParams(window.location.search);
-    const requested =
-        (params.get("scenario") ||DEFAULT_SCENARIO).toUpperCase();
+    const params = new URLSearchParams(window.location.search);
+    const requested = (params.get("scenario") ||DEFAULT_SCENARIO).toUpperCase();
 
     if (SCENARIO_FILES[requested]) {
         return requested;
@@ -56,19 +54,15 @@ function getScenarioFromURL() {
 async function loadData() {
     const scenario = getScenarioFromURL();
 
-    const trajectoryFile =SCENARIO_FILES[scenario];
+    const trajectoryFile =SCENARIO_FILES[scenario]; //B: "trajectory_scn_B.json",
 
     console.log("Loading scenario:",scenario);
     console.log("Trajectory file:",trajectoryFile);
     try {
         // Load trajectory AND metrics in parallel.
         const [trajectoryResponse,metricsResponse] = await Promise.all([
-            fetch(
-                `data/${trajectoryFile}`
-            ),
-            fetch(
-                "data/metrics.json"
-            )
+            fetch(`data/${trajectoryFile}`),
+            fetch("data/metrics.json")
         ]);
         // CHECK TRAJECTORY FILE
         if (!trajectoryResponse.ok) {
@@ -186,14 +180,8 @@ function calculateDistanceTravelled(index) {
     }
 
     const samples =trajectoryData.samples;
-    const outageStart =Number(
-            trajectoryData.metadata
-                .outage_start_s
-        );
-    const outageEnd =Number(
-            trajectoryData.metadata
-                .outage_end_s
-        );
+    const outageStart =Number(trajectoryData.metadata.outage_start_s);
+    const outageEnd =Number(trajectoryData.metadata.outage_end_s);
     let distance = 0;
 
     for (let i = 1;i <= index && i < samples.length;i++) {
@@ -304,6 +292,7 @@ function updateDashboard() {
     }
 
     // UKF SPEED
+    /*
     const speedElement = document.getElementById("speedValue");
     if (
         speedElement &&
@@ -314,6 +303,7 @@ function updateDashboard() {
         const speedKmh = Number(sample.ukf_estimate.speed_ms) * 3.6;
         speedElement.textContent = speedKmh.toFixed(1);
     }
+        */
 
     // UKF UNCERTAINTY
     const uncertaintyElement =document.getElementById("uncertaintyValue");
@@ -374,31 +364,19 @@ function updateNavigationMode(sample) {
 }
 
 // METRICS.JSON / ABLATION
-// FIND METRICS FOR CURRENT SCENARIO
 function getCurrentScenarioMetrics() {
-    if (
-        !metricsData ||
-        !Array.isArray(
-            metricsData.scenarios
-        ) ||
-        !trajectoryData
-    ) {
+    if (!metricsData || !Array.isArray(metricsData.scenarios) || !trajectoryData) {
         return null;
     }
 
-    const scenarioId =
-        trajectoryData.metadata &&
-        trajectoryData.metadata
-            .scenario_id;
+    const scenarioId = trajectoryData.metadata && trajectoryData.metadata.scenario_id;
 
     console.log(
         "Looking for metrics:",
         scenarioId
     );
 
-    return metricsData.scenarios.find(
-        scenario =>scenario.scenario_id ===scenarioId
-    ) || null;
+    return metricsData.scenarios.find(scenario => scenario.scenario_id ===scenarioId) || null;
 }
 
 // FORMAT METRIC
@@ -422,32 +400,27 @@ function updateAblationMetrics() {
     console.log("Ablation metrics:",scenario);
 
     // BASELINE INS
-    const baselineElement =document.getElementById("baselineDrift");
+    const baselineElement = document.getElementById("baselineDrift");
     if (baselineElement) {
-        baselineElement.textContent =
-            formatMetric(
-                scenario
-                    .baseline_ins_open_loop
-                    ?.drift_percent
-            );
+        baselineElement.textContent = formatMetric(scenario.baseline_ins_open_loop?.drift_percent);
     }
-
-    // ML
-    const mlElement =document.getElementById("mlDrift");
-    if (mlElement) {
-        mlElement.textContent = formatMetric(scenario.with_ml?.drift_percent);
-    }
-
+    
     // NHC
     const nhcElement =document.getElementById("nhcDrift");
     if (nhcElement) {
         nhcElement.textContent = formatMetric(scenario.with_nhc?.drift_percent);
     }
 
+    // ML
+    const mlElement =document.getElementById("ukf+nhc+speed");
+    if (mlElement) {
+        mlElement.textContent = formatMetric(scenario.final_system?.drift_percent);
+    }
+
     // FINAL SYSTEM
     const finalElement =document.getElementById("finalDrift");
     if (finalElement) {
-        finalElement.textContent = formatMetric(scenario.final_system?.drift_percent);
+        finalElement.textContent = formatMetric(scenario.ukf_full_snapped?.drift_percent);
     }
 }
 

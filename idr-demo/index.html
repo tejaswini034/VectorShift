@@ -1,296 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>VectorShift | GNSS Outage Demo</title>
+    <link rel="stylesheet" href="style.css">
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+    <script src="vendor/leaflet/leaflet.js"></script>
 </head>
 
-
 <body>
-
     <main class="app-container">
-
         <!-- HEADER -->
-
         <header class="top-bar">
-
             <div class="brand-section">
-
                 <div>
                     <p class="eyebrow">
                         GNSS-RESILIENT NAVIGATION
                     </p>
-
                     <h1>
                         VectorShift
                     </h1>
                 </div>
-
             </div>
 
-
             <div class="status-section">
-
                 <div
                     id="modeBadge"
                     class="mode-badge gnss-mode"
                 >
                     GNSS ACTIVE
                 </div>
-
             </div>
-
         </header>
 
-
         <!-- MAIN CONTENT -->
-
         <section class="main-content">
-
             <!-- LEFT: MAP -->
-
             <section class="map-panel">
-
                 <div class="panel-header">
-
                     <div>
-
                         <h2>
                             Navigation Replay
                         </h2>
-
                         <p>
                             GNSS vs Navigation Estimate vs Ground Truth
                         </p>
-
                     </div>
-
                 </div>
 
-
                 <!-- Aashita owns what goes inside this -->
-
+                <!--
                 <div id="map">
-
                     <div class="map-placeholder">
-
                         <p>
                             Map loading...
                         </p>
-
                     </div>
-
                 </div>
+                -->
 
+                <div id="map"></div>
 
                 <!-- LEGEND -->
-
                 <div class="trajectory-legend">
-
                     <div class="legend-item">
-
                         <span class="legend-dot raw-gnss"></span>
-
                         Raw GNSS
-
                     </div>
 
-
                     <div class="legend-item">
-
                         <span class="legend-dot estimate"></span>
-
                         Navigation Estimate
-
                     </div>
-
 
                     <div class="legend-item">
-
                         <span class="legend-dot ground-truth"></span>
-
                         Ground Truth
-
                     </div>
-
                 </div>
-
             </section>
 
-
-
             <!-- RIGHT: METRICS -->
-
             <aside class="metrics-panel">
-
-
                 <div class="metric-card">
-
                     <p class="metric-label">
                         CURRENT DRIFT
                     </p>
-
                     <div class="metric-value">
-
                         <span id="driftValue">
                             0.0
                         </span>
-
                         <span class="metric-unit">
                             m
                         </span>
-
                     </div>
-
                 </div>
 
-
-
                 <div class="metric-card">
-
                     <p class="metric-label">
                         DRIFT PERCENTAGE
                     </p>
-
                     <div class="metric-value">
-
                         <span id="driftPercent">
                             0.0
                         </span>
-
                         <span class="metric-unit">
                             %
                         </span>
-
                     </div>
-
                 </div>
-
-
-
+                <!--
                 <div class="metric-card">
-
                     <p class="metric-label">
                         SPEED
                     </p>
-
                     <div class="metric-value">
-
                         <span id="speedValue">
                             0.0
                         </span>
-
                         <span class="metric-unit">
                             km/h
                         </span>
-
                     </div>
-
                 </div>
-
-
-
+            -->
                 <div class="metric-card">
-
                     <p class="metric-label">
                         OUTAGE TIME
                     </p>
-
                     <div class="metric-value">
-
                         <span id="outageTime">
                             0
                         </span>
-
                         <span class="metric-unit">
                             s
                         </span>
-
                     </div>
-
                 </div>
 
-
                 <div class="metric-card">
-
                     <p class="metric-label">
-                        DISTANCE TRAVELLED
+                        DISTANCE TRAVELLED AFTER GNSS OUTAGE
                     </p>
-
                     <div class="metric-value">
-
                         <span id="distanceValue">
                             0.0
                         </span>
-
                         <span class="metric-unit">
                             m
                         </span>
-
                     </div>
-
                 </div>
 
-
                 <div class="metric-card">
-
                     <p class="metric-label">
                         POSITION UNCERTAINTY
                     </p>
-
                     <div class="metric-value">
-
                         <span id="uncertaintyValue">
                             0.0
                         </span>
-
                         <span class="metric-unit">
                             m
                         </span>
-
                     </div>
-
                 </div>
-
-
             </aside>
-
         </section>
 
-
-
         <!-- CONTROLS -->
-
         <section class="controls-panel">
-
-
             <div class="timeline-section">
-
                 <div class="timeline-labels">
-
                     <span>
                         Replay Position
                     </span>
-
                     <span id="currentTime">
                         0.0 s
                     </span>
-
                 </div>
-
 
                 <input
                     id="timelineSlider"
@@ -299,20 +192,14 @@
                     max="100"
                     value="0"
                 >
-
             </div>
 
-
-
             <div class="control-row">
-
-
                 <button id="playButton">
 
                     ▶ Play
 
                 </button>
-
 
                 <button id="restartButton">
 
@@ -320,147 +207,97 @@
 
                 </button>
 
-
                 <label class="speed-control">
 
                     Playback
 
                     <select id="playbackSpeed">
-
                         <option value="1">
                             1×
                         </option>
-
                         <option value="2">
                             2×
                         </option>
-
                     </select>
-
                 </label>
-
-
+                <!--
                 <label class="scenario-control">
-
                     Outage Duration
-
                     <select id="outageDuration">
-
                         <option value="30">
                             30 seconds
                         </option>
-
                         <option value="60" selected>
                             60 seconds
                         </option>
-
                         <option value="120">
                             120 seconds
                         </option>
-
                         <option value="300">
                             300 seconds
                         </option>
-
                     </select>
-
                 </label>
-
-
+            -->
             </div>
-
         </section>
 
-
-
         <!-- ABLATION -->
-
         <section class="ablation-panel">
-
             <div class="panel-header">
-
                 <div>
-
                     <h2>
                         Navigation Performance
                     </h2>
-
                     <p>
                         Component-wise evaluation during GNSS outage
                     </p>
-
                 </div>
-
             </div>
 
 
             <div class="ablation-grid">
-
-
                 <div class="ablation-card">
-
                     <p>
                         Baseline INS
                     </p>
-
                     <strong id="baselineDrift">
                         —
                     </strong>
-
                 </div>
-
-
+                
                 <div class="ablation-card">
-
                     <p>
-                        + ML Assistance
+                        UKF + NHC
                     </p>
-
-                    <strong id="mlDrift">
-                        —
-                    </strong>
-
-                </div>
-
-
-                <div class="ablation-card">
-
-                    <p>
-                        + Navigation Constraints
-                    </p>
-
                     <strong id="nhcDrift">
                         —
                     </strong>
-
                 </div>
-
-
+                <div class="ablation-card">
+                    <p>
+                        UKF + NHC + Speed constraints
+                    </p>
+                    <strong id="ukf+nhc+speed">
+                        —
+                    </strong>
+                </div>
+            
                 <div class="ablation-card final-card">
-
                     <p>
                         Final System
                     </p>
-
                     <strong id="finalDrift">
                         —
                     </strong>
-
                 </div>
-
-
             </div>
-
         </section>
-
-
     </main>
 
-
+    <script src="vendor/leaflet/leaflet.js"></script>
     <script src="map.js"></script>
-
     <script src="app.js"></script>
 
 </body>
-
 </html>
