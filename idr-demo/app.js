@@ -432,13 +432,51 @@ function playReplay() {
     //
     // --------------------------------------------------------
 
+    // --------------------------------------------------------
+    // SCN_LONG ONLY
+    // --------------------------------------------------------
+    // Same logic as teammate's map.js:
+    // Find the last outage sample where:
+    //   - drift is still < 10%
+    //   - at least 50 m has been travelled
+    //
+    // Other scenarios are NOT affected.
+    let playbackEndIndex = trajectoryData.samples.length - 1;
+
+    if (currentScenario === "LONG") {
+        const samples = trajectoryData.samples;
+        const outageStart =
+            Number(trajectoryData.metadata?.outage_start_s);
+
+        let lastGoodIndex = null;
+
+        for (let i = 0; i < samples.length; i++) {
+            const s = samples[i];
+
+            if (
+                s.mode === 1 &&
+                Number(s.timestamp_s) >= outageStart &&
+                s.drift_pct !== null &&
+                Number(s.drift_pct) < 10 &&
+                Number(s.cumulative_distance_m || 0) >= 50
+            ) {
+                lastGoodIndex = i;
+            }
+        }
+
+        if (lastGoodIndex !== null) {
+            playbackEndIndex = lastGoodIndex;
+        }
+    }
+
     playbackTimer =
         setInterval(
             () => {
-                if (currentIndex >= trajectoryData.samples.length - 1) {
+                if (currentIndex >= playbackEndIndex) {
                     pauseReplay();
                     return;
                 }
+
                 currentIndex++;
                 updateDashboard();
             },
