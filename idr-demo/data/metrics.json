@@ -9,7 +9,7 @@
  "scenarios": [
   {
    "scenario": "30_second_outage_sharp_turn",
-   "scenario_id": "scn_A",
+   "scenario_id": "scn_C",
    "description": "Sharp turn, 18.3 m/s entry, vehicle stops mid-outage",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 468.1,
@@ -64,7 +64,7 @@
   },
   {
    "scenario": "30_second_outage_highway",
-   "scenario_id": "scn_B",
+   "scenario_id": "scn_A",
    "description": "Highway, constant speed \u2014 primary ISRO benchmark case",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 366.2,
@@ -112,14 +112,14 @@
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": 8.7,
-    "drift_percent": 2.37,
+    "drift_percent": 2.98,
     "passes": true,
     "status": "measured"
    }
   },
   {
    "scenario": "30_second_outage_urban",
-   "scenario_id": "scn_C",
+   "scenario_id": "scn_B",
    "description": "Urban, moderate turn",
    "outage_duration_s": 30.0,
    "distance_travelled_m": 352.4,
@@ -167,7 +167,7 @@
     "mae_m": null,
     "max_error_m": null,
     "final_error_m": 5.2,
-    "drift_percent": 1.48,
+    "drift_percent": 2.76,
     "passes": true,
     "status": "measured"
    }

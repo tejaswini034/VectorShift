@@ -19,7 +19,7 @@ let playbackMultiplier = 1;
 
 // SCENARIO CONFIGURATION
 // A = hard corner, B = highway, C = urban/mixed, LONG = 300 s outage
-const DEFAULT_SCENARIO = "B";
+const DEFAULT_SCENARIO = "A";
 const SCENARIO_FILES = {
     A: "trajectory_scn_A.json",
     B: "trajectory_scn_B.json",
@@ -28,9 +28,9 @@ const SCENARIO_FILES = {
 };
 
 const SCENARIO_LABELS = {
-    A: "Scenario A — Hard Turn",
-    B: "Scenario B — Highway",
-    C: "Scenario C — Urban / Mixed",
+    A: "Scenario A — Highway",
+    B: "Scenario B — Urban / Mixed",
+    C: "Scenario C — Hard Turn",
     LONG: "Scenario LONG — Extended Outage"
 };
 
@@ -441,6 +441,7 @@ function playReplay() {
     //   - at least 50 m has been travelled
     //
     // Other scenarios are NOT affected.
+    
     let playbackEndIndex = trajectoryData.samples.length - 1;
 
     if (currentScenario === "LONG") {
