@@ -1,0 +1,29 @@
+{
+  "status": "PASSED",
+  "failures": [],
+  "warnings": [
+    "Fewer than eight verified drivers are present; do not claim eight-driver generalization."
+  ],
+  "windows_by_split": {
+    "train": 843727,
+    "val": 61741,
+    "test": 64333
+  },
+  "drivers_by_split": {
+    "test": [
+      "D"
+    ],
+    "train": [
+      "A",
+      "E"
+    ],
+    "val": [
+      "B"
+    ]
+  },
+  "sessions_by_split": {
+    "test": 1,
+    "train": 70,
+    "val": 1
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "contract_version": "2.0.0",
+  "sample_hz": 10.0,
+  "window": 20,
+  "feature_names": [
+    "gyro_yaw_rate_enu_rad_s",
+    "lin_acc_E_mps2",
+    "lin_acc_N_mps2",
+    "lin_acc_U_mps2",
+    "mag_heading_valid"
+  ],
+  "feature_dtype": "float32",
+  "target": "V GNSS Velocity (km/hr) / 3.6 = speed m/s",
+  "normalization": "StandardScaler fitted on train only; raw SI shards are preserved",
+  "split_strategy": "driver-disjoint",
+  "driver_split": {
+    "A": "train",
+    "E": "train",
+    "B": "val",
+    "D": "test"
+  },
+  "shard_counts": {
+    "test": 1,
+    "train": 70,
+    "val": 1
+  },
+  "window_counts": {
+    "test": 64333,
+    "train": 843727,
+    "val": 61741
+  },
+  "rejected_sessions": []
+}

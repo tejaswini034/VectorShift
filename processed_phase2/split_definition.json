@@ -1,0 +1,32 @@
+{
+  "strategy": "driver-disjoint fixed split",
+  "driver_split": {
+    "A": "train",
+    "E": "train",
+    "B": "val",
+    "D": "test"
+  },
+  "summary": [
+    {
+      "split": "test",
+      "driver_id": "D",
+      "sessions": 1
+    },
+    {
+      "split": "train",
+      "driver_id": "A",
+      "sessions": 6
+    },
+    {
+      "split": "train",
+      "driver_id": "E",
+      "sessions": 64
+    },
+    {
+      "split": "val",
+      "driver_id": "B",
+      "sessions": 1
+    }
+  ],
+  "seed": 26168
+}

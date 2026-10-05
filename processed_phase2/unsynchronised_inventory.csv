@@ -1,0 +1,277 @@
+path,stream,driver_hint,status
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\M (Driver B)\V-M.csv,V,B,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S1\V-S1.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S2\V-S2.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S3a\V-S3a.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S3b\V-S3b.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S3c\V-S3c.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\S (Driver A)\S4\V-S4.csv,V,A,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\St (Driver C)\St1\V-St1.csv,V,C,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\St (Driver C)\St4\V-St4.csv,V,C,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\St (Driver C)\St6\V-St6.csv,V,C,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\St (Driver C)\St7\V-St7.csv,V,C,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfa01\V-Vfa01.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfa02\V-Vfa02.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb01a\V-Vfb01a.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb01b\V-Vfb01b.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb01c\V-Vfb01c.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb01d\V-Vfb01d.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02a\V-Vfb02a.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02b\V-Vfb02b.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02c\V-Vfb02c.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02d\V-Vfb02d.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02e\V-Vfb02e.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02f\V-Vfb02f.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vf (Driver E)\V-Vfb02g\V-Vfb02g.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta01a\V-Vta1a.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta01b\V-Vta1b.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta02\V-Vta2.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta03\V-Vta3.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta04\V-Vta4.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta05\V-Vta5.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta06\V-Vta6.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta07\V-Vta7.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta08\V-Vta8.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta09\V-Vta9.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta10\V-Vta10.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta11\V-Vta11.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta12\V-Vta12.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta13\V-Vta13.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta14\V-Vta14.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta15\V-Vta15.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta16\V-Vta16.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta17\V-Vta17.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta19\V-Vta19.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta20\V-Vta20.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta21\V-Vta21.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta22\V-Vta22.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta23\V-Vta23.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta24\V-Vta24.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta25\V-Vta25.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta26\V-Vta26.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta27\V-Vta27.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta28\V-Vta28.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta29\V-Vta29.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vta (Driver E)\Vta30\V-Vta30.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb01\V-Vtb1.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb02\V-Vtb2.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb03\V-Vtb3.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb04\V-Vtb4.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb05\V-Vtb5.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb06\V-Vtb6.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb07\V-Vtb7.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb08\V-Vtb8.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb09\V-Vtb9.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb10\V-Vtb10.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb11\V-Vtb11.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb12\V-Vtb12.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vtb (Driver E)\Vtb13\V-Vtb13.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw01\V-Vw1.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw02\V-Vw2.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw03\V-Vw3.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw04\V-Vw4.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw05\V-Vw5.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw06\V-Vw6.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw07\V-Vw7.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw08\V-Vw8.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw09\V-Vw9.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw10\V-Vw10.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw11\V-Vw10.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw12\V-Vw12.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw13\V-Vw13.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw14a\V-Vw14a.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw14b\V-Vw14b.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw14c\V-Vw14c.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw15\V-Vw15.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw16a\V-Vw16a.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw16b\V-Vw16b.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Vw (Driver E)\Vw17\V-Vw17.csv,V,E,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Y (Driver D)\Y1\V-Y1.csv,V,D,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Categorised IOVNB (V) Dataset\V Dataset\Y (Driver D)\Y2\V-Y2.csv,V,D,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A10.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A11.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A12.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A13.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A3.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A5.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A6.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A7.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A8.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-A9.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-I.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-M.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S3a.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S3b.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S3c.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-S4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T10.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T11.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T3.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T5.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T6.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T7.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T8.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-T9.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vfa01.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vfa02.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta10.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta11.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta12.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta13.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta14.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta15.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta16.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta17.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta19.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta1a.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta1b.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta20.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta21.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta22.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta23.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta24.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta25.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta26.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta27.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta28.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta29.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta3.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta30.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta5.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta6.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta7.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta8.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vta9.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb10.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb11.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb12.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb3.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb5.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb6.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb7.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb8.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vtb9.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw10.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw11.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw12.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw13.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw14a.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw14b.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw14c.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw15.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw16a.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw16b.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw17.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw2.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw3.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw4.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw5.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw6.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw7.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw8.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Vw9.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\S-Dataset\S-Y1.csv,S,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-M.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S1.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S2.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S3a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S3b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S3c.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-S4.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-St1.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-St4.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-St6.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-St7.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfa01.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfa02.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb01a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb01b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb01c.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb01d.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02c.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02d.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02e.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02f.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vfb02g.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta10.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta11.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta12.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta13.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta14.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta15.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta16.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta17.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta18.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta19.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta1a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta1b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta2.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta20.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta21.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta22.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta23.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta24.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta25.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta26.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta27.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta28.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta29.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta3.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta30.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta4.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta5.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta6.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta7.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta8.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vta9.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb1.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb10.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb11.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb12.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb13.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb2.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb3.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb4.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb5.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb6.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb7.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb8.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vtb9.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw1.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw10.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw11.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw12.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw13.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw14a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw14b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw14c.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw15.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw16a.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw16b.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw17.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw2.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw3.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw4.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw5.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw6.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw7.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw8.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Vw9.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Y1.csv,V,unknown,quarantined_until_alignment_and_deduplication
+E:\VectorShift\data_cleaning\Unsynchronised V and S Dataset\Uncategorised IOVNB (V and S) Dataset\V-Dataset\V-Y2.csv,V,unknown,quarantined_until_alignment_and_deduplication
